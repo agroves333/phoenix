@@ -1,0 +1,7 @@
+export { default as Footer } from 'components/Footer'
+export { default as Header } from 'components/Header'
+export { default as Layout } from 'components/Layout'
+export { default as SEO } from 'components/SEO'
+export { default as Services } from 'components/Services'
+export { default as Video } from 'components/Video'
+export { default as Hero } from 'components/Hero'
