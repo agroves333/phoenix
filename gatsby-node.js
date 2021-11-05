@@ -1,3 +1,13 @@
-const { useGatsbyNode } = require('gatsby-plugin-ts-config')
+const path = require('path')
 
-module.exports = useGatsbyNode(() => require('./gatsby/gatsby-node'))
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      alias: {
+        components: path.resolve(__dirname, './src/components'),
+        theme: path.resolve(__dirname, './src/theme.ts'),
+        static: path.resolve(__dirname, './static'),
+      },
+    },
+  })
+}

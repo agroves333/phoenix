@@ -1,22 +1,24 @@
 import React, { FC } from 'react'
 import { Box, Flex } from 'theme-ui'
 import { Video } from 'components'
+import { ThemeUIStyleObject } from '@theme-ui/css'
 
 interface Props {
   video?: string
   image?: string
+  sx?: ThemeUIStyleObject
 }
 
-const Hero: FC<Props> = ({ image, video, children }) => (
+const Hero: FC<Props> = ({ image, video, sx, children }) => (
   <Flex
     sx={{
       width: '100%',
-      height: '100%',
+      height: 'vh',
       color: 'white',
       background: image && `url(${image})`,
       justifyContent: 'center',
-      alignItems: 'center',
-      padding: [3, 5],
+      overflow: 'hidden',
+      ...sx,
     }}
     as="section"
   >

@@ -1,18 +1,50 @@
 import React from 'react'
-
-import Layout from 'components/Layout'
-import Seo from 'components/SEO'
-import Hero from '../components/Hero'
-import { Heading } from 'theme-ui'
+import { Button, Grid, Heading, Text } from 'theme-ui'
+import { Services, Hero, SEO, Layout } from 'components'
+import ParallaxSection from '../components/ParallaxSection'
+import Testimonials from '../components/Testimonials'
 
 const IndexPage = () => (
   <Layout>
-    <Seo title="Home" />
-    <Hero video="/video/hero-bg.mp4">
-      <Heading as="h1" sx={{ fontSize: [5, 7] }}>
-        Web, Mobile, and Desktop apps for the modern company.
-      </Heading>
-    </Hero>
+    <SEO title="Home" />
+    <Grid
+      gap={0}
+      columns={[1]}
+      sx={{
+        gridTemplateAreas: `
+        "hero"
+        "services"
+        "section1"
+        "section2"
+        "section3"
+      `,
+      }}
+    >
+      <Hero video="/video/hero-bg.mp4" sx={{ gridArea: 'hero' }}>
+        <Heading as="h1" sx={{ fontSize: [5, 7] }}>
+          Web, Mobile, and Desktop apps for the modern company.
+        </Heading>
+      </Hero>
+      <Services sx={{ gridArea: 'services' }} />
+      <ParallaxSection
+        bgImage="https://149448400.v2.pressablecdn.com/wp-content/uploads/2019/03/business-consulting4-44.jpg"
+        sx={{ gridArea: 'section1' }}
+      >
+        <Grid gap={3} columns={1}>
+          <Heading as="h3" sx={{ fontSize: 6 }}>
+            Consultancy services to expand your business rapidly.
+          </Heading>
+          <Text variant="body" sx={{ color: 'gray', fontSize: 3 }}>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi
+            corporis dolorem omnis perferendis reiciendis suscipit, ullam? Animi
+            culpa dolore fugiat impedit laborum libero minima, molestias natus
+            nihil repudiandae sit suscipit?
+          </Text>
+          <Button sx={{ width: 'fit-content' }}>View More</Button>
+        </Grid>
+      </ParallaxSection>
+      <Testimonials sx={{ gridArea: 'section2' }} />
+    </Grid>
   </Layout>
 )
 

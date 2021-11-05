@@ -1,4 +1,10 @@
-const theme = {
+import { Theme as UITheme } from 'theme-ui'
+
+export type Theme = UITheme & {
+  zIndex: Record<string, number>
+}
+
+const theme: Theme = {
   breakpoints: ['40em', '52em', '64em'],
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   fonts: {
@@ -17,11 +23,15 @@ const theme = {
     heading: 1.125,
   },
   colors: {
-    text: '#000',
+    text: '#333333',
     background: '#fff',
-    primary: '#cc3a00',
+    primary: '#fd5602',
     secondary: '#30c',
+    gray: '#999',
     muted: '#f6f6f6',
+    bgLight: '#eee',
+    bgDark: '#333',
+    transparent: 'rgba(255, 255, 255, 0)',
   },
   zIndex: {
     toolbar: 10,
@@ -31,6 +41,20 @@ const theme = {
       fontFamily: 'heading',
       lineHeight: 'heading',
       fontWeight: 'heading',
+    },
+    body: {
+      fontFamily: 'body',
+      lineHeight: 'body',
+      fontWeight: 'body',
+    },
+  },
+  buttons: {
+    primary: {
+      bg: 'primary',
+    },
+    secondary: {
+      bg: 'transparent',
+      color: 'primary',
     },
   },
   styles: {

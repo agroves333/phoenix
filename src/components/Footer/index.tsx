@@ -1,21 +1,26 @@
 import React, { FC } from 'react'
-import { Flex } from 'theme-ui'
+import { Box, Grid } from 'theme-ui'
 import theme from '../../theme'
 
 interface Props {}
 
-const Footer: FC<Props> = ({ children }) => (
-  <Flex
+const Footer: FC<Props> = () => (
+  <Grid
     sx={{
-      color: 'primary',
-      backgroundColor: 'p',
+      height: '300px',
+      color: 'white',
+      backgroundColor: 'primary',
       padding: '1rem',
       zIndex: theme.zIndex.toolbar,
+      gridArea: 'footer',
+      gridTemplateColumns: '1fr',
+      gridTemplateRows: '8fr 1fr',
     }}
     as="footer"
   >
-    {children}
-  </Flex>
+    <Box></Box>
+    <Box>© {new Date().getFullYear()}, Orange Groove Solutions</Box>
+  </Grid>
 )
 
 export default Footer

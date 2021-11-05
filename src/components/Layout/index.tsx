@@ -8,9 +8,10 @@
 import React, { FC, ReactNode } from 'react'
 import { Global } from '@emotion/react'
 
-import { Flex } from 'theme-ui'
+import { Box, ThemeProvider } from 'theme-ui'
 import { Header, Footer } from 'components'
 import globalStyles from '../../globalStyles'
+import theme from '../../theme'
 
 interface Props {
   children: ReactNode
@@ -18,27 +19,24 @@ interface Props {
 
 const Layout: FC<Props> = ({ children }) => {
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <Global styles={globalStyles} />
-      <Flex
+      <Box
         sx={{
-          flexDirection: 'column',
-          height: '100%',
+          gridTemplateAreas: `
+            "header"
+            "main"
+            "footer"
+          `,
         }}
       >
         <Header />
-        <Flex
-          as="main"
-          sx={{
-            justifyContent: 'center',
-            flexGrow: 1,
-          }}
-        >
+        <Box as="main" sx={{ flex: 1, gridArea: 'main' }}>
           {children}
-        </Flex>
-        <Footer>© {new Date().getFullYear()}, Orange Groove Solutions</Footer>
-      </Flex>
-    </>
+        </Box>
+        <Footer />
+      </Box>
+    </ThemeProvider>
   )
 }
 

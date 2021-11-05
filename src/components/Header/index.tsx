@@ -6,8 +6,12 @@ const Header: FC = () => (
   <Flex
     sx={{
       backgroundColor: 'rgba(24, 26, 27, 0.6)',
-      padding: '1rem',
       zIndex: theme.zIndex.toolbar,
+      position: 'fixed',
+      top: 0,
+      padding: 3,
+      width: '100%',
+      gridArea: 'header',
     }}
     as="header"
   >
@@ -16,7 +20,7 @@ const Header: FC = () => (
         margin: `0 auto`,
       }}
     >
-      <h1 style={{ margin: 0 }}>
+      <h1 style={{ margin: 0, lineHeight: 1 }}>
         <Link
           href="/"
           sx={{
