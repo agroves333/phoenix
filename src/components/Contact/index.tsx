@@ -12,6 +12,8 @@ const Contact: FC<Props> = ({ sx }) => {
   const serviceSelectRef = useRef<HTMLSelectElement>(null)
   const messageInputRef = useRef<HTMLTextAreaElement>(null)
 
+  // @ts-ignore
+  // @ts-ignore
   return (
     <Flex
       sx={{
@@ -37,30 +39,33 @@ const Contact: FC<Props> = ({ sx }) => {
         <Text as="h2" sx={{ fontSize: 6 }}>
           Contact
         </Text>
-        <Box>
-          <Label htmlFor="name">Name</Label>
-          <Input name="name" sx={{ bg: 'white' }} ref={nameInputRef} />
-        </Box>
-        <Box>
-          <Label htmlFor="email">Email</Label>
-          <Input name="email" sx={{ bg: 'white' }} ref={emailInputRef} />
-        </Box>
-        <Box>
-          <Label htmlFor="type">Service</Label>
-          <Select name="type" ref={serviceSelectRef}>
-            <option value="web">Website</option>
-            <option value="mobile">Mobile</option>
-            <option value="desktop">Desktop</option>
-          </Select>
-        </Box>
-        <Box>
-          <Label htmlFor="message">Message</Label>
-          <Textarea
-            name="name"
-            ref={messageInputRef}
-            sx={{ fontFamily: 'body', bg: 'white' }}
-          />
-        </Box>
+        {/* @ts-ignore */}
+        <form name="contact" netlify>
+          <Box>
+            <Label htmlFor="name">Name</Label>
+            <Input name="name" sx={{ bg: 'white' }} ref={nameInputRef} />
+          </Box>
+          <Box>
+            <Label htmlFor="email">Email</Label>
+            <Input name="email" sx={{ bg: 'white' }} ref={emailInputRef} />
+          </Box>
+          <Box>
+            <Label htmlFor="type">Service</Label>
+            <Select name="type" ref={serviceSelectRef}>
+              <option value="web">Website</option>
+              <option value="mobile">Mobile</option>
+              <option value="desktop">Desktop</option>
+            </Select>
+          </Box>
+          <Box>
+            <Label htmlFor="message">Message</Label>
+            <Textarea
+              name="name"
+              ref={messageInputRef}
+              sx={{ fontFamily: 'body', bg: 'white' }}
+            />
+          </Box>
+        </form>
       </Grid>
     </Flex>
   )
