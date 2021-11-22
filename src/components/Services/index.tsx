@@ -11,6 +11,10 @@ interface Props {
   sx?: ThemeUIStyleObject
 }
 
+const rand = (min = 0, max = 100) => {
+  return Math.floor(Math.random() * (+max - +min)) + +min
+}
+
 const Services: FC<Props> = ({ sx }) => {
   const [hasAnimated, setHasAnimated] = useState<boolean>(false)
 
@@ -20,7 +24,7 @@ const Services: FC<Props> = ({ sx }) => {
       y: -150,
       opacity: 1,
       transition: {
-        duration: 1,
+        duration: 2,
       },
     },
   }
@@ -51,6 +55,7 @@ const Services: FC<Props> = ({ sx }) => {
       initial="hidden"
       animate={controls}
       variants={variants}
+      transition={{ type: 'spring', stiffness: 100 }}
     >
       <Grid
         gap={4}

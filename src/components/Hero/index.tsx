@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { Box, Flex } from 'theme-ui'
+import { Flex } from 'theme-ui'
 import { Video } from 'components'
 import { ThemeUIStyleObject } from '@theme-ui/css'
 
@@ -23,7 +23,16 @@ const Hero: FC<Props> = ({ image, video, sx, children }) => (
     as="section"
   >
     {video && <Video src={video} autoPlay muted loop />}
-    <Box sx={{ zIndex: 1 }}>{children}</Box>
+    <Flex
+      sx={{
+        zIndex: 1,
+        position: 'absolute',
+        height: '100%',
+        alignItems: 'center',
+      }}
+    >
+      {children}
+    </Flex>
   </Flex>
 )
 

@@ -26,10 +26,10 @@ const Testimonial: FC<Props> = ({ avatar, name, title, text, ...props }) => (
     <Box my={3}>
       <Text sx={{ mr: 2 }}>{text}</Text>
     </Box>
-    <Grid gap={1} columns="1fr 6fr" sx={{ alignItems: 'center' }}>
-      <Avatar src={avatar} />
+    <Grid gap={2} columns="1fr 4fr" sx={{ alignItems: 'center' }}>
+      <Avatar size={70} src={avatar} />
       <Grid gap={1} columns={1}>
-        <Text sx={{ fontSize: 5 }}>{name}</Text>
+        <Text sx={{ fontSize: 4 }}>{name}</Text>
         <Text>{title}</Text>
       </Grid>
     </Grid>

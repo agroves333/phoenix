@@ -44,8 +44,8 @@ const Testimonials: FC<Props> = ({ sx }) => {
   }, [controls, inView])
 
   return (
-    <Grid gap={4} columns={1} sx={{ p: 4, ...sx }}>
-      <Heading as="h1" sx={{ fontSize: 6 }}>
+    <Grid gap={4} columns={1} sx={{ p: 6, ...sx }}>
+      <Heading as="h1" sx={{ fontSize: 6, textAlign: 'center' }}>
         Testimonials
       </Heading>
       <motion.div
@@ -58,13 +58,13 @@ const Testimonials: FC<Props> = ({ sx }) => {
           <Testimonial
             avatar="https://149448400.v2.pressablecdn.com/wp-content/uploads/2019/03/business-consulting3-1.png"
             name="Michael McDonald"
-            title="Client"
+            title="Clear"
             text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum expedita, iure laboriosam maxime perspiciatis possimus quas quos ratione reprehenderit saepe? Aut consequuntur deleniti eius excepturi in nemo neque officiis praesentium!"
           />
           <Testimonial
             avatar="https://149448400.v2.pressablecdn.com/wp-content/uploads/2019/03/business-consulting3-2.png"
             name="Freddie Mercury"
-            title="Client"
+            title="Carmmunity"
             text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum expedita, iure laboriosam maxime perspiciatis possimus quas quos ratione reprehenderit saepe? Aut consequuntur deleniti eius excepturi in nemo neque officiis praesentium!"
           />
         </Grid>

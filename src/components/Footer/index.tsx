@@ -7,7 +7,7 @@ interface Props {}
 const Footer: FC<Props> = () => (
   <Grid
     sx={{
-      height: '300px',
+      height: '100px',
       color: 'white',
       backgroundColor: 'primary',
       padding: '1rem',

@@ -17,6 +17,7 @@ const Bucket: FC<Props> = ({ title, text, icon, ...props }) => (
       bg: 'bgLight',
       padding: '4',
       textAlign: 'center',
+      borderRadius: '4px',
     }}
     {...props}
   >

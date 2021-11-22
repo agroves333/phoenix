@@ -1,32 +1,45 @@
-import React, { FC, ReactNode, useEffect, useState } from 'react'
+import React, {
+  FC,
+  ReactNode,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react'
 import { Box, FlexProps, Grid } from 'theme-ui'
 import { ThemeUIStyleObject } from '@theme-ui/css'
 import { useInView } from 'react-intersection-observer'
-import {
-  motion,
-  useAnimation,
-  useTransform,
-  useViewportScroll,
-} from 'framer-motion'
+import { motion, useAnimation } from 'framer-motion'
 
 interface Props extends FlexProps {
   children?: ReactNode
   bgImage?: string
   height?: string
+  orientation?: 'left' | 'right'
   sx?: ThemeUIStyleObject
 }
+
+// const calculateMinHeight = (height: number, range: number): number => {
+//   return height + height * range
+// }
+//
+// const rand = (min = 0, max = 100) => {
+//   return Math.floor(Math.random() * (+max - +min)) + +min
+// }
 
 const ParallaxSection: FC<Props> = ({
   children,
   height,
   bgImage,
+  orientation = 'left',
   sx,
   ...props
 }) => {
-  const [hasAnimated, setHasAnimated] = useState<boolean>(false)
-  const { scrollY } = useViewportScroll()
-  const imageParallaxY = useTransform(scrollY, [0, 300], [0, 0])
+  const [offsetTop, setOffsetTop] = useState(0)
+  const bgRef = useRef<HTMLDivElement>(null)
+  // const { scrollY } = useViewportScroll()
 
+  const [hasAnimated, setHasAnimated] = useState<boolean>(false)
   const variants = {
     hidden: { x: -100, opacity: 0 },
     visible: {
@@ -39,7 +52,18 @@ const ParallaxSection: FC<Props> = ({
   }
 
   const controls = useAnimation()
-  const { ref, inView } = useInView()
+  const { ref: childrenRef, inView } = useInView()
+
+  useLayoutEffect(() => {
+    const onResize = () => {
+      setOffsetTop(bgRef?.current?.offsetTop || 0)
+    }
+
+    onResize()
+    window.addEventListener('resize', onResize)
+
+    return () => window.removeEventListener('resize', onResize)
+  }, [bgRef])
 
   useEffect(() => {
     if (inView === true) {
@@ -58,12 +82,17 @@ const ParallaxSection: FC<Props> = ({
     }
   }, [controls, inView])
 
+  // const y = useTransform(scrollY, [offsetTop, offsetTop + 1], [0, -1], {
+  //   clamp: false,
+  // })
+
   return (
     <Grid
       gap={0}
       columns={[1, null, 2]}
       sx={{
         height,
+        overflow: 'hidden',
         ...sx,
       }}
       {...props}
@@ -72,14 +101,15 @@ const ParallaxSection: FC<Props> = ({
         sx={{
           color: 'white',
           bg: 'bgDark',
-          padding: [2, 4],
+          padding: [2, 5],
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
+          order: orientation === 'left' ? 1 : 2,
         }}
       >
         <motion.div
-          ref={ref}
+          ref={childrenRef}
           initial="hidden"
           animate={controls}
           variants={variants}
@@ -87,17 +117,14 @@ const ParallaxSection: FC<Props> = ({
           {children}
         </motion.div>
       </Box>
-      <Box sx={{}}>
-        <motion.div style={{ y: imageParallaxY, height: '100%' }}>
-          <Box
-            sx={{
-              background: `url(${bgImage})`,
-              backgroundSize: 'cover',
-              height: ['400px', '100%'],
-            }}
-          />
-        </motion.div>
-      </Box>
+      <Box
+        sx={{
+          background: `url(${bgImage}) no-repeat center center fixed`,
+          backgroundSize: 'cover',
+          order: orientation === 'left' ? 2 : 1,
+          height: '100%',
+        }}
+      />
     </Grid>
   )
 }
