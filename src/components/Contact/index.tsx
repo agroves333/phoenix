@@ -1,5 +1,15 @@
 import React, { FC, useRef } from 'react'
-import { Box, Flex, Grid, Input, Label, Select, Text, Textarea } from 'theme-ui'
+import {
+  Box,
+  Button,
+  Flex,
+  Grid,
+  Input,
+  Label,
+  Select,
+  Text,
+  Textarea,
+} from 'theme-ui'
 import { ThemeUIStyleObject } from '@theme-ui/css'
 
 interface Props {
@@ -65,6 +75,7 @@ const Contact: FC<Props> = ({ sx }) => {
               sx={{ fontFamily: 'body', bg: 'white' }}
             />
           </Box>
+          <Button type="submit">Send</Button>
         </form>
       </Grid>
     </Flex>
