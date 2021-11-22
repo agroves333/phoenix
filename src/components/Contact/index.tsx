@@ -53,11 +53,21 @@ const Contact: FC<Props> = ({ sx }) => {
         <form name="contact" netlify>
           <Box>
             <Label htmlFor="name">Name</Label>
-            <Input name="name" sx={{ bg: 'white' }} ref={nameInputRef} />
+            <Input
+              name="name"
+              type="text"
+              sx={{ bg: 'white' }}
+              ref={nameInputRef}
+            />
           </Box>
           <Box>
             <Label htmlFor="email">Email</Label>
-            <Input name="email" sx={{ bg: 'white' }} ref={emailInputRef} />
+            <Input
+              name="email"
+              type="email"
+              sx={{ bg: 'white' }}
+              ref={emailInputRef}
+            />
           </Box>
           <Box>
             <Label htmlFor="type">Service</Label>
@@ -75,6 +85,7 @@ const Contact: FC<Props> = ({ sx }) => {
               sx={{ fontFamily: 'body', bg: 'white' }}
             />
           </Box>
+          <input type="hidden" name="form-name" value="contact" />
           <Button type="submit">Send</Button>
         </form>
       </Grid>
