@@ -49,8 +49,7 @@ const Contact: FC<Props> = ({ sx }) => {
         <Text as="h2" sx={{ fontSize: 6 }}>
           Contact
         </Text>
-        {/* @ts-ignore */}
-        <form name="contact" netlify>
+        <form name="contact" data-netlify="true">
           <Box>
             <Label htmlFor="name">Name</Label>
             <Input
