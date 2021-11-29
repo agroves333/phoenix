@@ -16,6 +16,7 @@ const Hero: FC<Props> = ({ image, video, sx, children }) => (
       height: 'vh',
       color: 'white',
       background: image && `url(${image})`,
+      alignItems: 'center',
       justifyContent: 'center',
       overflow: 'hidden',
       ...sx,
@@ -25,10 +26,12 @@ const Hero: FC<Props> = ({ image, video, sx, children }) => (
     {video && <Video src={video} autoPlay muted loop />}
     <Flex
       sx={{
+        flexDirection: 'column',
         zIndex: 1,
         position: 'absolute',
         height: '100%',
         alignItems: 'center',
+        justifyContent: 'center',
       }}
     >
       {children}

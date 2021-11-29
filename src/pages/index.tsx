@@ -18,13 +18,17 @@ const IndexPage = () => (
         "section1"
         "testimonials"
         "section2"
+        "test"
         "contact"
       `,
       }}
     >
       <Hero video="/video/hero-bg.mp4" sx={{ gridArea: 'hero' }}>
         <Heading as="h1" sx={{ fontSize: [5, 7], p: 5 }}>
-          Web, Mobile, and Desktop apps for the modern business.
+          Phoenix Transloading Service
+        </Heading>
+        <Heading as="h2" sx={{ fontSize: [4, 6], p: 5 }}>
+          Serving Greater Savannah Area since 2019
         </Heading>
       </Hero>
       <Services sx={{ gridArea: 'services' }} />
@@ -65,6 +69,7 @@ const IndexPage = () => (
           <Button sx={{ width: 'fit-content' }}>View More</Button>
         </Grid>
       </ParallaxSection>
+      <Testimonials sx={{ gridArea: 'test' }} />
       <Contact />
     </Grid>
   </Layout>

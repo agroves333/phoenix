@@ -41,7 +41,7 @@ const ParallaxSection: FC<Props> = ({
 
   const [hasAnimated, setHasAnimated] = useState<boolean>(false)
   const variants = {
-    hidden: { x: -100, opacity: 0 },
+    hidden: { x: orientation === 'left' ? -100 : 100, opacity: 0 },
     visible: {
       x: 0,
       opacity: 1,

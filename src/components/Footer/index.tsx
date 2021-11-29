@@ -19,7 +19,7 @@ const Footer: FC<Props> = () => (
     as="footer"
   >
     <Box></Box>
-    <Box>© {new Date().getFullYear()}, Orange Groove Solutions</Box>
+    <Box>© {new Date().getFullYear()}, Phoenix Transloading Services, LLC.</Box>
   </Grid>
 )
 

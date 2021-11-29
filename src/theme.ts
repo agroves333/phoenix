@@ -25,8 +25,8 @@ const theme: Theme = {
   colors: {
     text: '#333333',
     background: '#fff',
-    primary: '#fd5602',
-    secondary: '#30c',
+    primary: '#aa0000',
+    secondary: '#ccaa00',
     gray: '#999',
     muted: '#f6f6f6',
     bgLight: '#eee',
