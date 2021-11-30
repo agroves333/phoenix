@@ -2,7 +2,7 @@ import React, { FC, ReactNode } from 'react'
 import { Flex } from 'theme-ui'
 
 interface Props {
-  orientation: string
+  orientation?: string
   children: ReactNode
 }
 

@@ -5,14 +5,10 @@ import { FaSitemap, FaMobile, FaDesktop } from 'react-icons/fa'
 import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { ThemeUIStyleObject } from '@theme-ui/css'
-import theme from '../../theme'
+import theme from 'theme'
 
 interface Props {
   sx?: ThemeUIStyleObject
-}
-
-const rand = (min = 0, max = 100) => {
-  return Math.floor(Math.random() * (+max - +min)) + +min
 }
 
 const Services: FC<Props> = ({ sx }) => {
