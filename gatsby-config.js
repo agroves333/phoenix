@@ -5,8 +5,8 @@ module.exports = {
     FAST_REFRESH: true,
   },
   siteMetadata: {
-    title: `orange·groove`,
-    description: `Web & mobile development for the modern business`,
+    title: `PHOENIX`,
+    description: `Phoenix Transload Service`,
     author: `og`,
     siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
   },

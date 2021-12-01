@@ -1,17 +1,10 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
- */
-
 import React, { FC, ReactNode } from 'react'
 import { Global } from '@emotion/react'
 
 import { Box, ThemeProvider } from 'theme-ui'
 import { Header, Footer } from 'components'
 import globalStyles from '../../globalStyles'
-import theme from '../../theme'
+import theme from 'theme'
 
 interface Props {
   children: ReactNode

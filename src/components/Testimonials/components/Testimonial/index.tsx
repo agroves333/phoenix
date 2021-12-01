@@ -23,7 +23,7 @@ const Testimonial: FC<Props> = ({ avatar, name, title, text, ...props }) => (
       <Image src="/images/quote.png" sx={{ height: '30px' }} />
     </Box>
 
-    <Box my={3}>
+    <Box my={[0, 3]}>
       <Text sx={{ mr: 2 }}>{text}</Text>
     </Box>
     <Grid gap={2} columns="1fr 4fr" sx={{ alignItems: 'center' }}>

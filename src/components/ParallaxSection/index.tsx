@@ -1,44 +1,30 @@
-import React, {
-  FC,
-  ReactNode,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from 'react'
-import { Box, FlexProps, Grid } from 'theme-ui'
+import React, { FC, useEffect, useState } from 'react'
+import { Box, Button, FlexProps, Grid, Heading, Text } from 'theme-ui'
 import { ThemeUIStyleObject } from '@theme-ui/css'
 import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation } from 'framer-motion'
+import { Link } from 'gatsby'
 
 interface Props extends FlexProps {
-  children?: ReactNode
+  title?: string
+  text?: string
+  link?: string
   bgImage?: string
   height?: string
   orientation?: 'left' | 'right'
   sx?: ThemeUIStyleObject
 }
 
-// const calculateMinHeight = (height: number, range: number): number => {
-//   return height + height * range
-// }
-//
-// const rand = (min = 0, max = 100) => {
-//   return Math.floor(Math.random() * (+max - +min)) + +min
-// }
-
 const ParallaxSection: FC<Props> = ({
-  children,
+  title,
+  text,
+  link,
   height,
   bgImage,
   orientation = 'left',
   sx,
   ...props
 }) => {
-  const [offsetTop, setOffsetTop] = useState(0)
-  const bgRef = useRef<HTMLDivElement>(null)
-  // const { scrollY } = useViewportScroll()
-
   const [hasAnimated, setHasAnimated] = useState<boolean>(false)
   const variants = {
     hidden: { x: orientation === 'left' ? -100 : 100, opacity: 0 },
@@ -53,17 +39,6 @@ const ParallaxSection: FC<Props> = ({
 
   const controls = useAnimation()
   const { ref: childrenRef, inView } = useInView()
-
-  useLayoutEffect(() => {
-    const onResize = () => {
-      setOffsetTop(bgRef?.current?.offsetTop || 0)
-    }
-
-    onResize()
-    window.addEventListener('resize', onResize)
-
-    return () => window.removeEventListener('resize', onResize)
-  }, [bgRef])
 
   useEffect(() => {
     if (inView === true) {
@@ -82,10 +57,6 @@ const ParallaxSection: FC<Props> = ({
     }
   }, [controls, inView])
 
-  // const y = useTransform(scrollY, [offsetTop, offsetTop + 1], [0, -1], {
-  //   clamp: false,
-  // })
-
   return (
     <Grid
       gap={0}
@@ -101,7 +72,7 @@ const ParallaxSection: FC<Props> = ({
         sx={{
           color: 'white',
           bg: 'bgDark',
-          padding: [2, 5],
+          padding: [3, 5],
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -114,7 +85,19 @@ const ParallaxSection: FC<Props> = ({
           animate={controls}
           variants={variants}
         >
-          {children}
+          <Grid gap={3} columns={1} sx={{ p: [2, 3] }}>
+            <Heading as="h3" sx={{ fontSize: [4, 6] }}>
+              {title}
+            </Heading>
+            <Text variant="body" sx={{ color: 'gray', fontSize: 3 }}>
+              {text}
+            </Text>
+            {link && (
+              <Link to={link}>
+                <Button sx={{ width: 'fit-content' }}>View More</Button>
+              </Link>
+            )}
+          </Grid>
         </motion.div>
       </Box>
       <Box

@@ -17,7 +17,7 @@ const Contact: FC<Props> = ({ sx }) => {
       sx={{
         background: 'url(images/savannah.jpg) no-repeat center center fixed',
         backgroundSize: 'cover',
-        py: 6,
+        py: [4, 6],
         justifyContent: 'center',
         alignItems: 'center',
       }}
@@ -29,7 +29,7 @@ const Contact: FC<Props> = ({ sx }) => {
           padding: 4,
           textAlign: 'center',
           background: 'rgba(255, 255, 255, 0.85)',
-          width: '50%',
+          width: ['100%', '50%'],
           borderRadius: '4px',
           ...sx,
         }}
